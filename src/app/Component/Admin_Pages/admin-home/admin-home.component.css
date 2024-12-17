@@ -1,0 +1,63 @@
+.custom-scroll {
+  overflow-y: auto;
+}
+.overview-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.search-input {
+  max-width: 300px;
+  transition: box-shadow 0.3s ease;
+}
+.search-input:focus {
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+}
+.search-btn:hover {
+  background-color: #004085;
+}
+
+
+/* Chart Design */
+
+.card {
+  border-radius: 12px;
+}
+
+.card1{
+  height: 110px;
+}
+
+.card h5 {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.chart-card {
+  height: 350px;
+}
+
+.chart-card .card-body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+canvas {
+  max-width: 100% !important;
+  max-height: 270px;
+}
+
+.card-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px 12px 0 0;
+}
+
+.row .card {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+}
+
+.card-header.text-white {
+  color: white;
+}

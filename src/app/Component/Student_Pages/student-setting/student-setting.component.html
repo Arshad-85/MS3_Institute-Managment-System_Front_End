@@ -1,0 +1,513 @@
+<div class="container-fluid bg-light">
+    <div class="row justify-content-center pt-5">
+        <div class="col-12 col-lg-10 col-xl-11 mx-auto">
+            <h2 class="h3 mb-4 page-title"><i class="bi bi-gear"></i> Settings</h2>
+            <div class="my-4">
+                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" id="institute-tab" data-bs-toggle="tab" href="#institute" role="tab"
+                            aria-controls="institute" aria-selected="false">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="notifications-tab" data-bs-toggle="tab" href="#notifications" role="tab"
+                            aria-controls="notifications" aria-selected="false">Authentication</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+
+
+
+                    <!-- Institute Settings -->
+                    <div class="tab-pane fade show active" id="institute" role="tabpanel"
+                        aria-labelledby="institute-tab">
+                        <h2 class="h3 mb-4 page-title"><i class="bi bi-person"></i> Profile Settings
+                        </h2>
+                        <p>Set preferences for your Profile's updates.</p>
+
+                        <!-- <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12 col-md-6">
+                                    <label class="font-weight-normal">Language</label>
+                                    <select class="form-select" id="languageSelect">
+                                        <option value="en" selected>English</option>
+                                        <option value="es">Spanish</option>
+                                        <option value="fr">French</option>
+                                        <option value="de">German</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div> -->
+                        <div class="list-group mb-5 ">
+                            <div class="container-fluid bg-white">
+                                <div class="row justify-content-center pt-2 mx-auto">
+                                    <div class="col-12 col-lg-12 col-xl-12 mx-auto">
+
+                                        <div class="my-2">
+                                            <!-- Profile Section -->
+                                            <div class="row" *ngIf="StudentDetails">
+
+
+                                                <app-studentcommon-profile></app-studentcommon-profile>
+
+                                                <div class="col-12 col-md-12 mx-auto my-5 pt-5">
+                                                    <div class="col-12 col-md-12">
+                                                        <div class="card shadow-sm mb-4">
+                                                            <div class="card-header bg-dark text-white">
+                                                                <i class="bi bi-person-fill me-2"></i> Profile Settings
+                                                            </div>
+                                                            <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+                                                                <div class="card-body">
+                                                                    <!-- First Name -->
+                                                                    <div class="row pt-4">
+                                                                        <div class="col-12 col-md-6">
+                                                                            <label class="font-weight-normal">First
+                                                                                Name</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text"><i
+                                                                                            class="bi bi-person"></i></span>
+                                                                                </div>
+                                                                                <input class="form-control text-muted"
+                                                                                    formControlName="firstName">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- Last Name -->
+                                                                        <div class="col-12 col-md-6">
+                                                                            <label class="font-weight-normal">Last
+                                                                                Name</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text"><i
+                                                                                            class="bi bi-person"></i></span>
+                                                                                </div>
+                                                                                <input class="form-control text-muted"
+                                                                                    formControlName="lastName">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="row pt-4">
+                                                                        <!-- Gender -->
+                                                                        <div class="col-12 col-md-6">
+                                                                            <label
+                                                                                class="font-weight-normal">Gender</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text"><i
+                                                                                            class="bi bi-gender-ambiguous"></i></span>
+                                                                                </div>
+                                                                                <select class="form-control"
+                                                                                    formControlName="gender">
+                                                                                    <option value="1">Male</option>
+                                                                                    <option value="2">Female
+                                                                                    </option>
+                                                                                    <option value="3">Other</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- Date of Birth -->
+                                                                        <div class="col-12 col-md-6">
+                                                                            <label class="font-weight-normal">Date
+                                                                                of
+                                                                                Birth</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text"><i
+                                                                                            class="bi bi-calendar"></i></span>
+                                                                                </div>
+                                                                                <input class="form-control text-muted"
+                                                                                    formControlName="dateOfBirth"
+                                                                                    type="date">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Phone -->
+                                                                    <div class="row pt-4">
+                                                                        <div class="col-12 col-md-6">
+                                                                            <label
+                                                                                class="font-weight-normal">Phone</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text"><i
+                                                                                            class="bi bi-telephone"></i></span>
+                                                                                </div>
+                                                                                <input class="form-control text-muted"
+                                                                                    formControlName="phone">
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr class="my-2">
+                                                                        <p class="text-secondary">Address</p>
+                                                                        <div formGroupName="address" class="col-12">
+                                                                            <div class="row">
+                                                                                <!-- Address -->
+                                                                                <div class="col-12 col-md-6">
+                                                                                    <label
+                                                                                        class="font-weight-normal">AddressLine1</label>
+                                                                                    <div class="input-group">
+                                                                                        <div
+                                                                                            class="input-group-prepend">
+                                                                                            <span
+                                                                                                class="input-group-text"><i
+                                                                                                    class="bi bi-house-door"></i></span>
+                                                                                        </div>
+                                                                                        <input
+                                                                                            class="form-control text-muted"
+                                                                                            formControlName="addressLine1">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Address -->
+                                                                                <div class="col-12 col-md-6">
+                                                                                    <label
+                                                                                        class="font-weight-normal">AddressLine2</label>
+                                                                                    <div class="input-group">
+                                                                                        <div
+                                                                                            class="input-group-prepend">
+                                                                                            <span
+                                                                                                class="input-group-text"><i
+                                                                                                    class="bi bi-house-door"></i></span>
+                                                                                        </div>
+                                                                                        <input
+                                                                                            class="form-control text-muted"
+                                                                                            formControlName="addressLine2">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Address -->
+                                                                                <div class="col-12 col-md-6">
+                                                                                    <label
+                                                                                        class="font-weight-normal">city</label>
+                                                                                    <div class="input-group">
+                                                                                        <div
+                                                                                            class="input-group-prepend">
+                                                                                            <span
+                                                                                                class="input-group-text"><i
+                                                                                                    class="bi bi-house-door"></i></span>
+                                                                                        </div>
+                                                                                        <input
+                                                                                            class="form-control text-muted"
+                                                                                            formControlName="city">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Address -->
+                                                                                <div class="col-12 col-md-6">
+                                                                                    <label
+                                                                                        class="font-weight-normal">PostalCode</label>
+                                                                                    <div class="input-group">
+                                                                                        <div
+                                                                                            class="input-group-prepend">
+                                                                                            <span
+                                                                                                class="input-group-text"><i
+                                                                                                    class="bi bi-house-door"></i></span>
+                                                                                        </div>
+                                                                                        <input
+                                                                                            class="form-control text-muted"
+                                                                                            formControlName="postalCode">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Address -->
+                                                                                <div class="col-12 col-md-6">
+                                                                                    <label
+                                                                                        class="font-weight-normal">Country</label>
+                                                                                    <div class="input-group">
+                                                                                        <div
+                                                                                            class="input-group-prepend">
+                                                                                            <span
+                                                                                                class="input-group-text"><i
+                                                                                                    class="bi bi-house-door"></i></span>
+                                                                                        </div>
+                                                                                        <input
+                                                                                            class="form-control text-muted"
+                                                                                            formControlName="country">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                                    <!-- Buttons -->
+                                                                    <div class="row pt-4">
+                                                                        <div class="col-12 col-md-6"
+                                                                            *ngIf="!IsEditMode">
+                                                                            <button (click)="changeEditMode()"
+                                                                                type="button"
+                                                                                class="btn btn-success btn-md px-2">
+                                                                                <i class="bi bi-pencil"></i> Edit
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="col-12 col-md-6" *ngIf="IsEditMode">
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary btn-md">
+                                                                                <i class="bi bi-save"></i> Save
+                                                                            </button>
+                                                                            <button (click)="changeEditMode()"
+                                                                                type="button"
+                                                                                class="btn btn-secondary btn-md mx-2">
+                                                                                <i class="bi bi-arrow-repeat"></i>
+                                                                                Cancel
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-12">
+                                                        <div class="card shadow-sm mb-4">
+                                                            <div class="card-header bg-secondary text-white">
+                                                                <i class="bi bi-clock-history me-2"></i> Recent Updates
+                                                            </div>
+                                                            <ul class="list-group list-group-flush">
+                                                                <li
+                                                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    Last Update: <span
+                                                                        class="fw-bold text-muted">{{StudentDetails.updatedDate}}</span>
+
+                                                                </li>
+                                                                <li
+                                                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    Created Date: <span
+                                                                        class="fw-bold text-muted">{{StudentDetails.cteatedDate}}</span>
+
+
+                                                                </li>
+                                                            </ul>
+
+                                                        </div>
+                                                        <div class="card shadow-sm mb-2">
+                                                            <div class="card-header bg-dark text-white">
+                                                                <i class="bi bi-question-circle-fill me-2"></i>
+                                                                Frequently Asked Questions
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="accordion" id="profileSettingsFAQ">
+                                                                    <div class="accordion-item">
+                                                                        <h2 class="accordion-header" id="headingOne">
+                                                                            <button class="accordion-button"
+                                                                                type="button" data-bs-toggle="collapse"
+                                                                                data-bs-target="#collapseOne"
+                                                                                aria-expanded="true"
+                                                                                aria-controls="collapseOne">
+                                                                                How do I change my username?
+                                                                            </button>
+                                                                        </h2>
+                                                                        <div id="collapseOne"
+                                                                            class="accordion-collapse collapse show"
+                                                                            aria-labelledby="headingOne"
+                                                                            data-bs-parent="#profileSettingsFAQ">
+                                                                            <div class="accordion-body">
+                                                                                Currently, the option to change your
+                                                                                username is unavailable. You can update
+                                                                                your email address or full name in the
+                                                                                "Personal Information" section.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="accordion-item">
+                                                                        <h2 class="accordion-header" id="headingTwo">
+                                                                            <button class="accordion-button collapsed"
+                                                                                type="button" data-bs-toggle="collapse"
+                                                                                data-bs-target="#collapseTwo"
+                                                                                aria-expanded="false"
+                                                                                aria-controls="collapseTwo">
+                                                                                How can I reset my password if I forgot
+                                                                                it?
+                                                                            </button>
+                                                                        </h2>
+                                                                        <div id="collapseTwo"
+                                                                            class="accordion-collapse collapse"
+                                                                            aria-labelledby="headingTwo"
+                                                                            data-bs-parent="#profileSettingsFAQ">
+                                                                            <div class="accordion-body">
+                                                                                If you've forgotten your password, click
+                                                                                on the "Forgot Password" link on the
+                                                                                login page. You'll be sent a reset link
+                                                                                to your registered email address.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Add more FAQ items here -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                    <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
+                        <h5 class="mb-0 mt-5">Account Settings</h5>
+                        <p>Update your password and manage account preferences below.</p>
+                        <div class="list-group mb-5 ">
+                            <!-- Section: Password Reset Block -->
+                            <section>
+                                <!-- Jumbotron -->
+                                <div class="px-4 py-5 text-center text-lg-start" style="background-color: #f8f9fa;">
+                                    <div class="container">
+                                        <div class="row align-items-center">
+                                            <!-- Info Section -->
+                                            <div class="col-lg-6 col-12 mb-5">
+                                                <h1 class="my-5 display-5 fw-bold">
+                                                    Update Your Password<br />
+                                                    <span class="text-danger">Ensure your account's security</span>
+                                                </h1>
+                                                <p style="color: #6c757d;">
+                                                    Regularly updating your password ensures your account remains safe.
+                                                    Please provide your old password, a new one, and confirm it below.
+                                                </p>
+                                            </div>
+
+                                            <!-- Password Update Form -->
+                                            <div class="col-lg-4 col-12 ms-lg-4">
+                                                <div class="card border-0">
+                                                    <div class="card-body py-5 px-md-5">
+                                                        <form [formGroup]="changePass"
+                                                            (ngSubmit)="changeStudentPassword()">
+                                                            <!-- Old Password -->
+                                                            <div class="form-outline mb-4">
+                                                                <label class="form-label" for="oldPassword">Old
+                                                                    Password</label>
+                                                                <input type="password" id="oldPassword"
+                                                                    class="form-control"
+                                                                    formControlName="oldPassword" />
+                                                            </div>
+
+                                                            <!-- New Password -->
+                                                            <div class="form-outline mb-4">
+                                                                <label class="form-label" for="newPassword">New
+                                                                    Password</label>
+                                                                <input type="password" id="newPassword"
+                                                                    class="form-control"
+                                                                    formControlName="newPassword" />
+                                                                <div
+                                                                    *ngIf="changePass.get('newPassword')?.errors?.['passwordInvalid']">
+                                                                    <small class="text-danger">{{
+                                                                        changePass.get('newPassword')?.errors?.['passwordInvalid'].message
+                                                                        }}</small>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Confirm Password -->
+                                                            <div class="form-outline mb-4">
+                                                                <label class="form-label" for="confirmPassword">Confirm
+                                                                    Password</label>
+                                                                <input type="password" id="confirmPassword"
+                                                                    class="form-control"
+                                                                    formControlName="confirmPassword" />
+                                                                <div *ngIf="changePass.controls['confirmPassword'].invalid && changePass.controls['confirmPassword'].touched"
+                                                                    class="text-danger">
+                                                                    <div
+                                                                        *ngIf="changePass.controls['confirmPassword'].hasError('required')">
+                                                                        Confirm Password is required.</div>
+                                                                </div>
+                                                                <div *ngIf="changePass.controls['confirmPassword'].value !== changePass.controls['newPassword'].value && changePass.controls['confirmPassword'].touched"
+                                                                    class="text-danger">
+                                                                    Passwords do not match.
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Submit Button -->
+                                                            <div class="text-center">
+                                                                <button type="submit" [disabled]="changePass.invalid"
+                                                                    class="btn btn-secondary btn-block w-100">
+                                                                    Update Password
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mt-5">
+                                                <!-- Deactivate Account Section -->
+                                                <div class="card shadow-sm">
+                                                    <div class="card-body">
+                                                        <h5 class="section-header text-danger">Deactivate Account</h5>
+                                                        <p class="text-muted">
+                                                            If you no longer wish to use your account, you can
+                                                            deactivate it. Deactivating your account will temporarily
+                                                            disable your profile. You can reactivate it anytime by
+                                                            logging in again.
+                                                        </p>
+                                                        <button class="btn btn-outline-danger btn-md mt-3"
+                                                            data-bs-toggle="modal" data-bs-target="#deactivateModal">
+                                                            Deactivate Account
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal Confirmation for Deactivation -->
+                                                <div class="modal fade" id="deactivateModal" tabindex="-1"
+                                                    aria-labelledby="deactivateModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deactivateModalLabel">
+                                                                    Confirm Account Deactivation</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p><span class="fw-bold">Are you sure you want to deactivate your account?</span> <br>
+                                                                    This action is irreversible, and you will lose
+                                                                    access to all features immediately. You can
+                                                                    reactivate your account by logging in again.</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Cancel</button>
+                                                                <button type="button" class="btn btn-danger btn-md" (click)="deactivateStudent()">Yes,
+                                                                    Deactivate</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Jumbotron -->
+                            </section>
+                            <!-- Section: Password Reset Block -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

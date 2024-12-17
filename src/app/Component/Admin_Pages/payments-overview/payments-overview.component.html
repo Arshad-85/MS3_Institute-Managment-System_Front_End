@@ -1,0 +1,116 @@
+<div class="container py-5">
+    <div class="row">
+        <!-- Header Section -->
+        <div class="col-12 text-center mb-4">
+            <h2>Payment Overview</h2>
+            <p class="text-muted">View the details of payments made by students</p>
+        </div>
+
+        <!-- Payment Overview Summary Section -->
+        <div class="col-12 mb-4" *ngIf="paymentOverview">
+            <div class="row">
+                <!-- Total Payments Card -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
+                    <div class="card border-primary shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-primary fs-6 fs-sm-5 fs-lg-4">Total Payments</h5>
+                            <p class="display-6 display-sm-5 text-success">{{paymentOverview.totalPayment | currency:"Rs"}}</p>
+                            <small class="text-muted d-block">Total payments made</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Payments Card -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
+                    <div class="card border-info shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-info fs-6 fs-sm-5 fs-lg-4">Full Payments</h5>
+                            <p class="display-6 display-sm-5 text-primary">{{paymentOverview.fullPayment | currency:"Rs"}}</p>
+                            <small class="text-muted d-block">Total full payments</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Installments Card -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
+                    <div class="card border-success shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-success fs-6 fs-sm-5 fs-lg-4">Installments</h5>
+                            <p class="display-6 display-sm-5 text-warning">{{paymentOverview.installment | currency:"Rs"}}</p>
+                            <small class="text-muted d-block">Total installment payments</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Payments Card -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
+                    <div class="card border-warning shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-warning fs-6 fs-sm-5 fs-lg-4">Pending Payments</h5>
+                            <p class="display-6 display-sm-5 text-danger">{{paymentOverview.overDue | currency:"Rs"}}</p>
+                            <small class="text-muted d-block">Payments awaiting completion</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <!-- Recent Transactions Section -->
+        <div class="col-12">
+            <h4 class="mb-4">Recent Transactions</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Student Name</th>
+                            <th>Course</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                            <th>Method</th>
+                            <th>Transaction Date</th>
+                            <th>Invoice</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let transaction of transactions ; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{transaction.studentName}}</td>
+                            <td>{{transaction.courseName}}</td>
+                            <td>{{transaction.amountPaid | currency:"Rs"}}</td>
+                            <td>{{transaction.paymentType}}</td>
+                            <td>{{transaction.paymentMethod}}</td>
+                            <td>{{transaction.transactionDate | date}}</td>
+                            <td>
+                                <i class="bi bi-receipt pointer" (click)="GoToInvoice(transaction)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Pagination -->
+            <div class="d-flex justify-content-between align-items-center px-3 py-2 bg-light border-top">
+                <div class="hint-text">
+                  Showing <b>{{ currentLength }}</b> out of <b>{{ totalItems }}</b> entries
+                </div>
+                <ul class="pagination mb-0">
+                  <li class="page-item pointer" [class.disabled]="currentPage === 1">
+                    <a class="page-link" (click)="goToPage(currentPage - 1)">Previous</a>
+                  </li>
+      
+                  <li class="page-item pointer" *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="currentPage === i + 1">
+                    <a class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</a>
+                  </li>
+      
+                  <li class="page-item pointer" [class.disabled]="currentPage === totalPages">
+                    <a class="page-link" (click)="goToPage(currentPage + 1)">Next</a>
+                  </li>
+                </ul>
+              </div>
+        </div>
+        
+    </div>
+</div>
